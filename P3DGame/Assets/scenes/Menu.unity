@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -200,7 +200,6 @@ GameObject:
   - component: {fileID: 48929824}
   - component: {fileID: 48929823}
   - component: {fileID: 48929822}
-  - component: {fileID: 48929825}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -312,18 +311,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 48929820}
---- !u!114 &48929825
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 48929820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2662235f1da4798a1d692f55cf3664, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
 --- !u!1 &124647941
 GameObject:
   m_ObjectHideFlags: 0
@@ -4633,7 +4620,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 683995995}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99021b51e3cdb42fc9e546080835afcd, type: 3}
+  m_Script: {fileID: 11500000, guid: c907d66d87a9744d1b6a7115a0b66a6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &687242969
@@ -4948,7 +4935,6 @@ GameObject:
   - component: {fileID: 840257803}
   - component: {fileID: 840257802}
   - component: {fileID: 840257801}
-  - component: {fileID: 840257804}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -5060,18 +5046,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 840257799}
---- !u!114 &840257804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 840257799}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2662235f1da4798a1d692f55cf3664, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
 --- !u!1 &896904327
 GameObject:
   m_ObjectHideFlags: 0
@@ -5389,7 +5363,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa2662235f1da4798a1d692f55cf3664, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
 --- !u!1 &1132863867
 GameObject:
   m_ObjectHideFlags: 0
@@ -5635,7 +5608,6 @@ GameObject:
   - component: {fileID: 1336216324}
   - component: {fileID: 1336216323}
   - component: {fileID: 1336216322}
-  - component: {fileID: 1336216325}
   m_Layer: 5
   m_Name: HelpButton
   m_TagString: Untagged
@@ -5736,18 +5708,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1336216320}
---- !u!114 &1336216325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1336216320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2662235f1da4798a1d692f55cf3664, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sound: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
 --- !u!1 &1436030274
 GameObject:
   m_ObjectHideFlags: 0

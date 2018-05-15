@@ -9,12 +9,19 @@ public class MainMenu : MonoBehaviour {
 	public void StartGame()
 	{
 		// Load game scene
-		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex + 1);
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 	}
 
 	// Quit game
 	public void QuitGame()
 	{
-		Application.Quit ();
-	}
+        if (Application.isEditor)
+        {
+            UnityEditor.EditorApplication.isPlaying = false;
+        }
+        else
+        {
+            Application.Quit();
+        }
+    }
 }
