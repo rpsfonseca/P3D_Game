@@ -1,0 +1,9 @@
+     Main idea: Go through different rooms where you have to face different challenges, enemies…
+     Camera: First Person
+     Main Mechanic: Throw disc to hit enemies and obstacles
+     Scoring: for every enemy you hit or for any objective completed, you get X points
+     Ideas for rooms (not all of them yet):
+     - Run straight to the exit while trying to hit glass panels that come in lanes over you. For each one you break you get X amount of points
+     - Defend yourself from arrow shooting turrets, by hitting them with your disc
+     - You need to reach a higher point to get out of the room. Throw your special disc to get cubes to behave under your control. Stack them to make platforms you can jump on
+     - …
