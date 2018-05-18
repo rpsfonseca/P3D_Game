@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private float speed = 5.0f;
     [SerializeField]
     private float lookSensitivity = 3.0f;
+    [SerializeField]
+    private DiskController disk;
 
     private PlayerMotor motor;
 
@@ -46,5 +48,10 @@ public class PlayerController : MonoBehaviour
 
         // Apply camera rotation
         motor.RotateCamera(cameraRotation);
+
+        if (Input.GetButtonDown("Fire1") && disk != null)
+        {
+            disk.Throw();
+        }
     }
 }
