@@ -57,14 +57,26 @@ public class PlayerController : MonoBehaviour
         // Apply camera rotation
         motor.RotateCamera(cameraRotation);
 
-        if (Input.GetButtonDown("Fire1") && disk != null)
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Inventory.instance.UseItem(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Inventory.instance.UseItem(2);
+        }
+
+        if (!Inventory.instance.IsOpen && Input.GetButtonDown("Fire1") && disk != null)
         {
             disk.Throw();
         }
 
         if (focusedObject != null && Input.GetKeyDown(KeyCode.P))
         {
-            focusedObject.CheckIfAndInteract();
+            if (focusedObject.CheckIfAndInteract())
+            {
+                hasFocusedObject = false;
+            }
         }
     }
 

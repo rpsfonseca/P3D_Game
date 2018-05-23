@@ -83,7 +83,7 @@ public class Interactable : MonoBehaviour
         return canFocus;
     }
 
-    public void CheckIfAndInteract()
+    public bool CheckIfAndInteract()
     {
         // If we are currently being focused
         // and we haven't already interacted with the object
@@ -98,5 +98,6 @@ public class Interactable : MonoBehaviour
                 hasInteracted = true;
             }
         }
+        return hasInteracted;
     }
 }

@@ -22,6 +22,12 @@ public class Inventory : MonoBehaviour
 
     #endregion
 
+    private bool isOpen = true;
+    public bool IsOpen
+    {
+        get { return isOpen; }
+    }
+
     // Callback which is triggered when
     // an item gets added/removed.
     public delegate void OnItemChanged();
@@ -54,6 +60,11 @@ public class Inventory : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void UseItem(int index)
+    {
+        items[index - 1].Use();
     }
 
     // Remove an item

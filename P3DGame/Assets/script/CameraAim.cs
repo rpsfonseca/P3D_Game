@@ -22,7 +22,7 @@ public class CameraAim : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {
-            print("I'm looking at " + hit.transform.name);
+            //print("I'm looking at " + hit.transform.name);
             Interactable interactable = hit.collider.GetComponent<Interactable>();
             if (interactable != null && interactable.CheckDistanceToFocus(player.transform))
             {
