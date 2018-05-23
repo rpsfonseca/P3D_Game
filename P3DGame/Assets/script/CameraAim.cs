@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CameraAim : MonoBehaviour
 {
+    public GameObject player;
     private Camera cam;
 
     [SerializeField]
@@ -22,7 +23,20 @@ public class CameraAim : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
         {
             print("I'm looking at " + hit.transform.name);
-            diskController.SetTarget(hit.transform.position);
+            Interactable interactable = hit.collider.GetComponent<Interactable>();
+            if (interactable != null && interactable.CheckDistanceToFocus(player.transform))
+            {
+                //interactable.OnFocused(player.transform);
+                player.GetComponent<PlayerController>().FocusObject(interactable);
+            }
+            else
+            {
+                if (player.GetComponent<PlayerController>().HasFocusedObject)
+                {
+                    player.GetComponent<PlayerController>().UnfocusObject();
+                }
+                diskController.SetTarget(hit.transform.position);
+            }
         }
         else
         {

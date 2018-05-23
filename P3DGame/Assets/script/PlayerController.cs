@@ -14,6 +14,14 @@ public class PlayerController : MonoBehaviour
 
     private PlayerMotor motor;
 
+    private Interactable focusedObject;
+    private bool hasFocusedObject = false;
+    public bool HasFocusedObject
+    {
+        get { return hasFocusedObject; }
+        set { hasFocusedObject = value; }
+    }
+
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
@@ -53,5 +61,23 @@ public class PlayerController : MonoBehaviour
         {
             disk.Throw();
         }
+
+        if (focusedObject != null && Input.GetKeyDown(KeyCode.P))
+        {
+            focusedObject.CheckIfAndInteract();
+        }
+    }
+
+    public void FocusObject(Interactable objectToFocus)
+    {
+        focusedObject = objectToFocus;
+        focusedObject.OnFocused(transform);
+        hasFocusedObject = true;
+    }
+
+    public void UnfocusObject()
+    {
+        focusedObject.OnDefocused();
+        hasFocusedObject = false;
     }
 }
