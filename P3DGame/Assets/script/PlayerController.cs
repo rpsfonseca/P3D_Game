@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && disk != null)
         {
-            disk.Throw();
+            //disk.Throw();
         }
     }
 }

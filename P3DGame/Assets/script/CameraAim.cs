@@ -17,6 +17,7 @@ public class CameraAim : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+		/*
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5F, 0.5F, 0));
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
@@ -29,5 +30,6 @@ public class CameraAim : MonoBehaviour
             print("I'm looking at nothing!");
             diskController.SetTarget(cam.transform.forward * Mathf.Infinity);
         }
+        */
     }
 }
