@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+enum DiskType
+{
+    NORMAL,
+    FROST,
+    FIRE
+}
+
 [RequireComponent(typeof(Rigidbody))]
 public class DiskController : MonoBehaviour
 {
@@ -9,6 +16,8 @@ public class DiskController : MonoBehaviour
 	public float damage = 10.0f;
 	public float catchRadius = 0.5f;
 	public float maxThrowDistance = 30.0f;
+
+    public Item diskType;
 
 	public Camera fpsCamera;
 	public GameObject player;
@@ -26,6 +35,9 @@ public class DiskController : MonoBehaviour
 
 	private Rigidbody rigidBody;
 
+    private MeshRenderer meshRenderer;
+
+    private DiskType disk = DiskType.NORMAL;
 
 	void Start()
 	{
@@ -37,6 +49,10 @@ public class DiskController : MonoBehaviour
 		rigidBody = GetComponent<Rigidbody>();
 		rigidBody.isKinematic = true;
 		rigidBody.detectCollisions = false;
+
+        meshRenderer = GetComponent<MeshRenderer>();
+
+        Inventory.instance.Add(diskType);
 	}
 
 	void OnCollisionEnter(Collision collision)
@@ -98,7 +114,7 @@ public class DiskController : MonoBehaviour
 		rigidBody.AddForce (fpsCamera.transform.forward * speed, ForceMode.Impulse);
 	}
 
-	void ResetDisk()
+	public void ResetDisk()
 	{
 		rigidBody.velocity = Vector3.zero;
 		rigidBody.angularVelocity = Vector3.zero;
@@ -123,6 +139,23 @@ public class DiskController : MonoBehaviour
 		Gizmos.DrawWireSphere (fpsCamera.transform.position, catchRadius);
 	}
 
-
+    public void SetDisk(string name, Material material)
+    {
+        switch (name)
+        {
+            case "Normal":
+                disk = DiskType.NORMAL;
+                break;
+            case "Frost":
+                disk = DiskType.FROST;
+                break;
+            case "Fire":
+                disk = DiskType.FIRE;
+                break;
+            default:
+                break;
+        }
+        meshRenderer.material = material;
+    }
 }
 

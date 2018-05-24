@@ -54,9 +54,13 @@ public class Inventory : MonoBehaviour
 
             items.Add(item);    // Add item to list
 
+            items[items.Count - 1].SetDiskController(GameManager.instance.diskController);
+
             // Trigger callback
             if (onItemChangedCallback != null)
+            {
                 onItemChangedCallback.Invoke();
+            }
         }
 
         return true;

@@ -24,4 +24,5 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public Camera minimapCamera;
     public Canvas hud;
+    public DiskController diskController;
 }
