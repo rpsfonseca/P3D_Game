@@ -22,4 +22,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public GameObject player;
+    public Camera minimapCamera;
+    public Canvas hud;
 }
