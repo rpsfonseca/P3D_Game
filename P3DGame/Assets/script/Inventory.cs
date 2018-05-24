@@ -64,7 +64,10 @@ public class Inventory : MonoBehaviour
 
     public void UseItem(int index)
     {
-        items[index - 1].Use();
+        if (items.Count >= index)
+        {
+            items[index - 1].Use();
+        }
     }
 
     // Remove an item

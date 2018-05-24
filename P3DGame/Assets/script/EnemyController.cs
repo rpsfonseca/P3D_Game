@@ -18,6 +18,8 @@ public class EnemyController : MonoBehaviour
 	void Start ()
 	{
 		rigidBody = GetComponent<Rigidbody>();
+
+        target = GameManager.instance.player.transform;
 	}
 		
 	// Update is called once per frame
