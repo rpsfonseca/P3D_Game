@@ -66,9 +66,9 @@ public class PlayerController : MonoBehaviour
             Inventory.instance.UseItem(2);
         }
 
-        if (!Inventory.instance.IsOpen && Input.GetButtonDown("Fire1") && disk != null)
+        if (Input.GetButtonDown("Fire1") && disk != null)
         {
-            //disk.Throw();
+            disk.TryToThrow();
         }
 
         if (focusedObject != null && Input.GetKeyDown(KeyCode.P))

@@ -18,6 +18,10 @@ public class DiskController : MonoBehaviour
 	private Quaternion localRotation;
 
 	private bool isThrown = false;
+    public bool IsThrown
+    {
+        get { return IsThrown; }
+    }
 	private bool isCatchable = false;
 
 	private Rigidbody rigidBody;
@@ -59,17 +63,29 @@ public class DiskController : MonoBehaviour
 			}
 		}
 
-		// TODO: RETURN DISK BY PRESSING FIRE WHILE FLYING
-		if (Input.GetButtonDown ("Fire1")) 
-		{
-			if (!isThrown) {
-				Shoot ();
-			} else {
-				isCatchable = true;
-			}
-		}
+		//// TODO: RETURN DISK BY PRESSING FIRE WHILE FLYING
+		//if (Input.GetButtonDown ("Fire1")) 
+		//{
+		//	if (!isThrown) {
+		//		Shoot ();
+		//	} else {
+		//		isCatchable = true;
+		//	}
+		//}
 			
 	}
+
+    public void TryToThrow()
+    {
+        if (!isThrown)
+        {
+            Shoot();
+        }
+        else
+        {
+            isCatchable = true;
+        }
+    }
 
 	void Shoot()
 	{
