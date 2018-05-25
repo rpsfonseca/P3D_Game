@@ -11,7 +11,6 @@ public class EnemyController : MonoBehaviour
 	public float turnSpeed = 10f;
 
 	private Transform target;
-	public Transform partToRotate;
 
 	private Rigidbody rigidBody;
 
@@ -67,8 +66,8 @@ public class EnemyController : MonoBehaviour
 		{
 			Vector3 direction = target.position - transform.position;
 			Quaternion lookRotation = Quaternion.LookRotation (direction);
-			Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-			partToRotate.rotation = Quaternion.Euler (rotation);
+			Vector3 rotation = Quaternion.Lerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+			transform.rotation = Quaternion.Euler (rotation);
 		}*/
 
         if (target != null)
