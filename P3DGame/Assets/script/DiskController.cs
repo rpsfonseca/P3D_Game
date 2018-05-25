@@ -74,7 +74,6 @@ public class DiskController : MonoBehaviour
             if (ownerTriggerCounter == 2)
             {
                 ResetDisk();
-                ownerTriggerCounter = 0;
             }
         }
     }
@@ -142,7 +141,9 @@ public class DiskController : MonoBehaviour
 
 		isThrown = false;
 		isCatchable = false;
-	}
+
+        ownerTriggerCounter = 0;
+    }
 
 	// Draw range guidlines
 	void OnDrawGizmos()
