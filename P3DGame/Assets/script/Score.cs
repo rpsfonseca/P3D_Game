@@ -9,13 +9,21 @@ public class Score : MonoBehaviour {
 	public Text scoreText;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
 		score = 0;
 	}
 
 	// Update is called once per frame
-	void Update () {
-		score++;
-		scoreText.text = "Score: " + score;
+	void Update ()
+    {
+		//score++;
+		//scoreText.text = "Score: " + score;
 	}
+
+    public void IncrementScoreWithKill()
+    {
+        score += 10;
+        scoreText.text = "Score: " + score;
+    }
 }

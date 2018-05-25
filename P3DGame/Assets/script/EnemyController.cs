@@ -107,7 +107,8 @@ public class EnemyController : MonoBehaviour
 		//TODO: Change smoke particle system according to health
 		if (health <= 0)
 		{
-			//FIXME: Set turret to destroyed state
+            //FIXME: Set turret to destroyed state
+            GameManager.instance.IncrementPlayerScore();
 			Destroy(gameObject);
 		}
 	}

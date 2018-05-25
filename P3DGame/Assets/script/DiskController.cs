@@ -59,10 +59,15 @@ public class DiskController : MonoBehaviour
 
 	void OnCollisionEnter(Collision collision)
 	{
-		/*float distanceToPlayer = Vector3.Distance (transform.position, fpsCamera.transform.position);
+        /*float distanceToPlayer = Vector3.Distance (transform.position, fpsCamera.transform.position);
 
 		if (distanceToPlayer > catchRadius) 
 			isCatchable = true;*/
+
+        if (collision.collider.tag == "Enemy")
+        {
+            collision.collider.GetComponent<EnemyController>().TakeDamage(damage);
+        }
 	}
 
     private void OnTriggerEnter(Collider other)

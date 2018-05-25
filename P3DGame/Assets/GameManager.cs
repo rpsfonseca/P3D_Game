@@ -26,11 +26,17 @@ public class GameManager : MonoBehaviour
     public Canvas hud;
     public DiskController diskController;
     public HealthBar health;
+    public Score scoreManager;
 
     private float playerHealth = 100.0f;
 
     public void DealPlayerDamage(float hitDamage)
     {
         health.UpdateHealth(hitDamage);
+    }
+
+    public void IncrementPlayerScore()
+    {
+        scoreManager.IncrementScoreWithKill();
     }
 }

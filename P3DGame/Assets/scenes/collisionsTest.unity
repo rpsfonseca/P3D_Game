@@ -507,6 +507,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4703629832948116, guid: 2c48c75c918ec734496b103745c2e11e,
     type: 2}
   m_PrefabInternal: {fileID: 680488503}
+--- !u!114 &1025941964 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114496696443143578, guid: 3336c3dce19b1904e91686c518d7794e,
+    type: 2}
+  m_PrefabInternal: {fileID: 2102679705}
+  m_Script: {fileID: 11500000, guid: 46c6faabef35a4e87a6c48a03991ee59, type: 3}
 --- !u!1 &1149097197
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +657,11 @@ Prefab:
       propertyPath: health
       value: 
       objectReference: {fileID: 1322236030}
+    - target: {fileID: 114921158357516734, guid: f64e964b91e63ca40af1c555e0efec74,
+        type: 2}
+      propertyPath: scoreManager
+      value: 
+      objectReference: {fileID: 1025941964}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f64e964b91e63ca40af1c555e0efec74, type: 2}
   m_IsPrefabParent: 0
@@ -972,11 +983,6 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 224983017588666736, guid: 3336c3dce19b1904e91686c518d7794e,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -102.396484
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3336c3dce19b1904e91686c518d7794e, type: 2}

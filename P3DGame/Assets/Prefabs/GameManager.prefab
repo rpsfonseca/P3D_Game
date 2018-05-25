@@ -65,7 +65,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2f157d1c4b8bad4481190af879b4b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1543714402157068, guid: 2c48c75c918ec734496b103745c2e11e, type: 2}
+  player: {fileID: 0}
   minimapCamera: {fileID: 20313731043559918, guid: d59a3e12e17d5db47a3ac634e25e393d,
     type: 2}
   hud: {fileID: 223661342406873882, guid: 3336c3dce19b1904e91686c518d7794e, type: 2}
+  diskController: {fileID: 0}
+  health: {fileID: 0}
+  scoreManager: {fileID: 0}

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motionRange: 10
   damageFactor: 10
-  speed: 5
+  speed: 10
   initPos: {fileID: 0}
   lastPos: {x: 0, y: 0, z: 0}
   direction: {x: 0, y: 0, z: 0}
