@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 136356936526976064}
   - component: {fileID: 114980868088465254}
   - component: {fileID: 114592537790683926}
+  - component: {fileID: 135595970708637092}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -325,6 +326,7 @@ MonoBehaviour:
   damage: 10
   catchRadius: 0.5
   maxThrowDistance: 30
+  diskType: {fileID: 11400000, guid: cec67cafd09527a45a893494b4a01dee, type: 2}
   fpsCamera: {fileID: 20592055102525510}
   player: {fileID: 0}
 --- !u!114 &114317356688669910
@@ -373,6 +375,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1479356203327964}
   m_Enabled: 1
+--- !u!135 &135595970708637092
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543714402157068}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 1.74, z: 0}
 --- !u!136 &136356936526976064
 CapsuleCollider:
   m_ObjectHideFlags: 1

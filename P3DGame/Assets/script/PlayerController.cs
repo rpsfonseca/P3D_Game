@@ -25,6 +25,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         motor = GetComponent<PlayerMotor>();
+
+        Physics.IgnoreCollision(disk.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
     }
 
     private void Update()
@@ -83,6 +85,14 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.name == "Disk")
+    //    {
+
+    //    }
+    //}
 
     public void FocusObject(Interactable objectToFocus)
     {

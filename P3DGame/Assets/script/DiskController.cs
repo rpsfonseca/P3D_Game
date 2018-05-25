@@ -39,6 +39,8 @@ public class DiskController : MonoBehaviour
 
     private DiskType disk = DiskType.NORMAL;
 
+    private int ownerTriggerCounter = 0;
+
 	void Start()
 	{
 		// Get relative transfomr of disk to camera
@@ -57,26 +59,36 @@ public class DiskController : MonoBehaviour
 
 	void OnCollisionEnter(Collision collision)
 	{
-		float distanceToPlayer = Vector3.Distance (transform.position, fpsCamera.transform.position);
+		/*float distanceToPlayer = Vector3.Distance (transform.position, fpsCamera.transform.position);
 
 		if (distanceToPlayer > catchRadius) 
-			isCatchable = true;
+			isCatchable = true;*/
 	}
-		
 
-	void Update()
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("kjdnfjkdsbfjbsdj");
+        if (other.name == "Player")
+        {
+            ownerTriggerCounter++;
+            if (ownerTriggerCounter == 2)
+            {
+                ResetDisk();
+                ownerTriggerCounter = 0;
+            }
+        }
+    }
+
+    void Update()
 	{
 		// Rotate the disk around the y axis
 		transform.RotateAround(transform.position, transform.up, Time.deltaTime * 90.0f);
 
 
 		// Check if thrown disk is in range with player
-		if (isThrown && isCatchable) {
-			float distanceToPlayer = Vector3.Distance (transform.position, fpsCamera.transform.position);
-
-			if (distanceToPlayer < catchRadius || distanceToPlayer > maxThrowDistance) {
-				ResetDisk ();
-			}
+		if (isThrown && isCatchable)
+        {
+			ResetDisk ();
 		}
 
 		//// TODO: RETURN DISK BY PRESSING FIRE WHILE FLYING
