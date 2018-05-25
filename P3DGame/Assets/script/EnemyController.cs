@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class EnemyController : MonoBehaviour
 {
-
 	public float health = 100.0f;
 	public float range = 15f;
 	public float turnSpeed = 10f;
@@ -13,6 +12,8 @@ public class EnemyController : MonoBehaviour
 	private Transform target;
 
 	private Rigidbody rigidBody;
+
+
 
 	void Start ()
 	{
