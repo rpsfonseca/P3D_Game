@@ -363,6 +363,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114088808109337284, guid: 2c48c75c918ec734496b103745c2e11e,
+        type: 2}
+      propertyPath: diskType
+      value: 
+      objectReference: {fileID: 11400000, guid: cec67cafd09527a45a893494b4a01dee,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c48c75c918ec734496b103745c2e11e, type: 2}
   m_IsPrefabParent: 0
@@ -603,6 +609,7 @@ GameObject:
   - component: {fileID: 1634893040}
   - component: {fileID: 1634893039}
   - component: {fileID: 1634893038}
+  - component: {fileID: 1634893037}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -610,6 +617,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!135 &1634893037
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1634893036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 8
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1634893038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,7 +643,6 @@ MonoBehaviour:
   health: 100
   range: 10
   turnSpeed: 10
-  target: {fileID: 1023244232}
   partToRotate: {fileID: 1634893042}
 --- !u!23 &1634893039
 MeshRenderer:
@@ -736,9 +754,20 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1023244228}
+    - target: {fileID: 114921158357516734, guid: f64e964b91e63ca40af1c555e0efec74,
+        type: 2}
+      propertyPath: diskController
+      value: 
+      objectReference: {fileID: 1886475661}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f64e964b91e63ca40af1c555e0efec74, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1886475661 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114088808109337284, guid: 2c48c75c918ec734496b103745c2e11e,
+    type: 2}
+  m_PrefabInternal: {fileID: 680488503}
+  m_Script: {fileID: 11500000, guid: 3a0994a2b3d594bbd9b7c43c418c2e32, type: 3}
 --- !u!1 &1910114677
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,6 +1038,11 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 224983017588666736, guid: 3336c3dce19b1904e91686c518d7794e,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -102.396484
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3336c3dce19b1904e91686c518d7794e, type: 2}

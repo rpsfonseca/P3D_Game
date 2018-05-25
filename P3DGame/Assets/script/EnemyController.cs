@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
 	public float range = 15f;
 	public float turnSpeed = 10f;
 
-	public Transform target;
+	private Transform target;
 	public Transform partToRotate;
 
 	private Rigidbody rigidBody;
@@ -28,7 +28,13 @@ public class EnemyController : MonoBehaviour
 		Rotate ();
 	}
 
-	void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log(other.name);
+        target = other.transform;
+    }
+
+    void OnCollisionEnter(Collision collision)
 	{
 		GameObject gameObj = collision.gameObject;
 		DiskController disk = gameObj.GetComponent<DiskController> ();
@@ -55,7 +61,7 @@ public class EnemyController : MonoBehaviour
 	// Rotate enemy if player is insde range
 	void Rotate()
 	{
-		float distanceToPlayer = Vector3.Distance (transform.position, target.position);
+        /*float distanceToPlayer = Vector3.Distance (transform.position, target.position);
 
 		if (distanceToPlayer <= range)
 		{
@@ -63,7 +69,14 @@ public class EnemyController : MonoBehaviour
 			Quaternion lookRotation = Quaternion.LookRotation (direction);
 			Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
 			partToRotate.rotation = Quaternion.Euler (rotation);
-		}
+		}*/
+
+        if (target != null)
+        {
+            Vector3 direction = target.position - transform.position;
+            direction.y = 0;
+            transform.forward = direction.normalized;
+        }
 	}
 		
 	// Draw range guidlines
