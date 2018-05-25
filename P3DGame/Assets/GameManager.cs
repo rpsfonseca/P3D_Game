@@ -25,4 +25,12 @@ public class GameManager : MonoBehaviour
     public Camera minimapCamera;
     public Canvas hud;
     public DiskController diskController;
+    public HealthBar health;
+
+    private float playerHealth = 100.0f;
+
+    public void DealPlayerDamage(float hitDamage)
+    {
+        health.UpdateHealth(hitDamage);
+    }
 }

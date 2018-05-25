@@ -18,15 +18,29 @@ public class HealthBar : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		health -= 0.1f;
+	void Update ()
+    {
+		//health -= 0.1f;
 
-		//FIXME: This is just for debugging
-		if (health < 0)
-			health = 0;
+		////FIXME: This is just for debugging
+		//if (health < 0)
+		//	health = 0;
 
-		float ratio = health / maxHealth; 
-		healthBarFill.localScale = new Vector3 (ratio, 1f, 1f);
-		healthText.text = ((int) health).ToString(); 
+		//float ratio = health / maxHealth; 
+		//healthBarFill.localScale = new Vector3 (ratio, 1f, 1f);
+		//healthText.text = ((int) health).ToString(); 
 	}
+
+    public void UpdateHealth(float hitDamage)
+    {
+        health -= hitDamage;
+
+        //FIXME: This is just for debugging
+        if (health < 0)
+            health = 0;
+
+        float ratio = health / maxHealth;
+        healthBarFill.localScale = new Vector3(ratio, 1f, 1f);
+        healthText.text = ((int)health).ToString();
+    }
 }

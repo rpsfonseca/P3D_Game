@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
     {
         motor = GetComponent<PlayerMotor>();
 
-        Physics.IgnoreCollision(disk.gameObject.GetComponent<Collider>(), GetComponent<Collider>());
+        Physics.IgnoreCollision(disk.gameObject.GetComponent<Collider>(), GetComponent<CapsuleCollider>());
     }
 
     private void Update()
