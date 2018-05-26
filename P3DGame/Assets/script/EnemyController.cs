@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour
     private bool hasStartedShoot = false;
 	private bool hasSmoke = false;
 	private bool isDead = false;
-
+    private bool isFrozen = false;
 
 	void Start ()
 	{
@@ -50,20 +50,23 @@ public class EnemyController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		Rotate ();
-
-        if (!hasStartedShoot && target != null)
+        if (!isFrozen)
         {
-            StartCoroutine(Shoot());
-            hasStartedShoot = true;
-        }
+            Rotate();
 
-        if (hasStartedShoot && target == null)
-        {
-            StopCoroutine(Shoot());
-            hasStartedShoot = false;
-        }
+            if (!hasStartedShoot && target != null)
+            {
+                StartCoroutine(Shoot());
+                Debug.Log("sdlnfsdnf");
+                hasStartedShoot = true;
+            }
 
+            if (hasStartedShoot && target == null)
+            {
+                StopCoroutine(Shoot());
+                hasStartedShoot = false;
+            }
+        }
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -154,7 +157,6 @@ public class EnemyController : MonoBehaviour
 
     public void TakeDamageOverTime(float timeAmount, float damageAmount)
     {
-        Debug.Log("wgowegoiwno");
         StartCoroutine(_TakeDamageOverTime(timeAmount, damageAmount));
     }
 
@@ -171,9 +173,24 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void TakeFrost(float amount)
+    public void TakeFrostDamage(float amount)
     {
+        StartCoroutine(_TakeFrostDamage(amount));
+    }
 
+    private IEnumerator _TakeFrostDamage(float timeAmount)
+    {
+        isFrozen = true;
+
+        Transform holdTarget = target;
+        target = null;
+        StopCoroutine(Shoot());
+        hasStartedShoot = false;
+
+        yield return new WaitForSeconds(timeAmount);
+
+        isFrozen = false;
+        target = holdTarget;
     }
 
     // Rotate enemy if player is insde range

@@ -15,3 +15,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e9cb31c6a93608c4f903f4afde69f67f, type: 3}
   isDefaultItem: 0
   itemMaterial: {fileID: 2100000, guid: 4ee64140277d903479dd9ce9a86efe78, type: 2}
+  damageFactor: 5

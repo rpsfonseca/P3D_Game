@@ -72,6 +72,7 @@ public class DiskController : MonoBehaviour
                     collision.collider.GetComponent<EnemyController>().TakeDamage(damage);
                     break;
                 case DiskType.FROST:
+                    collision.collider.GetComponent<EnemyController>().TakeFrostDamage(disk.damageFactor);
                     break;
                 case DiskType.FIRE:
                     collision.collider.GetComponent<EnemyController>().TakeDamageOverTime(5.0f, disk.damageFactor);
