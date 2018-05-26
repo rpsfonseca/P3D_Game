@@ -145,13 +145,39 @@ public class EnemyController : MonoBehaviour
 
 			GameManager.instance.IncrementPlayerScore();
 
+            StopAllCoroutines();
+
 			Destroy(gameObject);
-			Destroy (explode.gameObject, main.duration);
+			Destroy(explode.gameObject, main.duration);
 		}
 	}
 
-	// Rotate enemy if player is insde range
-	void Rotate()
+    public void TakeDamageOverTime(float timeAmount, float damageAmount)
+    {
+        Debug.Log("wgowegoiwno");
+        StartCoroutine(_TakeDamageOverTime(timeAmount, damageAmount));
+    }
+
+    private IEnumerator _TakeDamageOverTime(float timeAmount, float damageAmount)
+    {
+        float entryTime = Time.timeSinceLevelLoad;
+        while ((Time.timeSinceLevelLoad - entryTime) < timeAmount)
+        {
+            TakeDamage(damageAmount);
+
+            Debug.Log("HEALTH: " + health);
+
+            yield return new WaitForSeconds(1.0f);
+        }
+    }
+
+    public void TakeFrost(float amount)
+    {
+
+    }
+
+    // Rotate enemy if player is insde range
+    void Rotate()
 	{
         /*float distanceToPlayer = Vector3.Distance (transform.position, target.position);
 

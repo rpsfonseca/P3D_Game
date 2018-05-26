@@ -17,7 +17,7 @@ public class DiskController : MonoBehaviour
 	public float catchRadius = 0.5f;
 	public float maxThrowDistance = 30.0f;
 
-    public Item diskType;
+    public Item disk;
 
 	public Camera fpsCamera;
 	public GameObject player;
@@ -37,7 +37,7 @@ public class DiskController : MonoBehaviour
 
     private MeshRenderer meshRenderer;
 
-    private DiskType disk = DiskType.NORMAL;
+    private DiskType diskType = DiskType.NORMAL;
 
     private int ownerTriggerCounter = 0;
 
@@ -54,7 +54,7 @@ public class DiskController : MonoBehaviour
 
         meshRenderer = GetComponent<MeshRenderer>();
 
-        Inventory.instance.Add(diskType);
+        Inventory.instance.Add(disk);
 	}
 
 	void OnCollisionEnter(Collision collision)
@@ -66,13 +66,24 @@ public class DiskController : MonoBehaviour
 
         if (collision.collider.tag == "Enemy")
         {
-            collision.collider.GetComponent<EnemyController>().TakeDamage(damage);
+            switch (diskType)
+            {
+                case DiskType.NORMAL:
+                    collision.collider.GetComponent<EnemyController>().TakeDamage(damage);
+                    break;
+                case DiskType.FROST:
+                    break;
+                case DiskType.FIRE:
+                    collision.collider.GetComponent<EnemyController>().TakeDamageOverTime(5.0f, disk.damageFactor);
+                    break;
+                default:
+                    break;
+            }
         }
 	}
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("kjdnfjkdsbfjbsdj");
         if (other.name == "Player")
         {
             ownerTriggerCounter++;
@@ -157,23 +168,24 @@ public class DiskController : MonoBehaviour
 		Gizmos.DrawWireSphere (fpsCamera.transform.position, catchRadius);
 	}
 
-    public void SetDisk(string name, Material material)
+    public void SetDisk(string name, Item _disk)
     {
+        disk = _disk;
         switch (name)
         {
             case "Normal":
-                disk = DiskType.NORMAL;
+                diskType = DiskType.NORMAL;
                 break;
             case "Frost":
-                disk = DiskType.FROST;
+                diskType = DiskType.FROST;
                 break;
             case "Fire":
-                disk = DiskType.FIRE;
+                diskType = DiskType.FIRE;
                 break;
             default:
                 break;
         }
-        meshRenderer.material = material;
+        meshRenderer.material = disk.itemMaterial;
     }
 }
 

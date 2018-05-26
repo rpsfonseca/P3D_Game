@@ -10,6 +10,7 @@ public class Item : ScriptableObject
     public Sprite icon = null;              // Item icon
     public bool isDefaultItem = false;      // Is the item default wear?
     public Material itemMaterial;
+    public float damageFactor;
 
     // Called when the item is pressed in the inventory
     public virtual void Use()
@@ -19,7 +20,7 @@ public class Item : ScriptableObject
 
         Debug.Log("Using " + name);
 
-        diskController.SetDisk(name, itemMaterial);
+        diskController.SetDisk(name, this);
     }
 
     public void RemoveFromInventory()
