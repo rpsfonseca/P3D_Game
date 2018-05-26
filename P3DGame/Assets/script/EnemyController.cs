@@ -5,25 +5,33 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class EnemyController : MonoBehaviour
 {
-	public float health = 100.0f;
+	public float maxHealth = 100.0f;
 	public float range = 15f;
 	public float turnSpeed = 10f;
 
+	public ParticleSystem Smoke;
+	public ParticleSystem Explosion;
+	public GameObject spawnPoint;
+    public GameObject bulletPrefab;
+    
+	private GameObject[] bullets;
 	private Transform target;
-
 	private Rigidbody rigidBody;
 
-    public GameObject bulletPrefab;
-    private GameObject[] bullets;
+	private ParticleSystem smoke;
+	private ParticleSystem explode;
 
-    public GameObject spawnPoint;
 
+	private float health;
     private int currentBulletIndex = 0;
-
     private bool hasStartedShoot = false;
+	private bool hasSmoke = false;
+	private bool isDead = false;
+
 
 	void Start ()
 	{
+		health = maxHealth;
 		rigidBody = GetComponent<Rigidbody>();
 
         //target = GameManager.instance.player.transform;
@@ -55,6 +63,7 @@ public class EnemyController : MonoBehaviour
             StopCoroutine(Shoot());
             hasStartedShoot = false;
         }
+
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -104,12 +113,40 @@ public class EnemyController : MonoBehaviour
 	{
 		health -= amount;
 
-		//TODO: Change smoke particle system according to health
+		smoke = Instantiate<ParticleSystem> (Smoke, gameObject.transform.position, Quaternion.Euler(-90,0,0) ,gameObject.transform);
+		smoke.Stop ();
+		var main = smoke.main;
+
+		// Create smoke if health drops beneath 50%
+		if (health <= 50 && !hasSmoke) 
+		{
+			main.startColor = new ParticleSystem.MinMaxGradient (new Color (1.0f, 1.0f, 1.0f, 0.15f));
+			main.loop = true;
+			smoke.Play ();
+			hasSmoke = true;
+		}
+
+		// Change smoke color if it has only 25 % of health left
+		if (health / maxHealth <= 0.25)
+		{
+			main.startColor = new ParticleSystem.MinMaxGradient (new Color (1.0f, 1.0f, 1.0f, 0.75f));
+			smoke.Play ();
+		}
+
+		// Destroy object
 		if (health <= 0)
 		{
-            //FIXME: Set turret to destroyed state
-            GameManager.instance.IncrementPlayerScore();
+			explode = Instantiate<ParticleSystem> (Explosion, gameObject.transform.position, Quaternion.Euler(-90,0,0));
+			explode.Stop();
+			main = explode.main;
+			main.loop = false;
+			main.duration = 1.0f;
+			explode.Play();
+
+			GameManager.instance.IncrementPlayerScore();
+
 			Destroy(gameObject);
+			Destroy (explode.gameObject, main.duration);
 		}
 	}
 
