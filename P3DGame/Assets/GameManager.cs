@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+		playerName = PlayerPrefs.GetString ("CurrentPlayer");
+
         if (instance != null)
         {
             Debug.LogWarning("More than one instance of Inventory found!");
@@ -28,6 +31,7 @@ public class GameManager : MonoBehaviour
     public HealthBar health;
     public Score scoreManager;
 
+	private string playerName = "test";
     private float playerHealth = 100.0f;
 
     public void DealPlayerDamage(float hitDamage)

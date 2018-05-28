@@ -2,9 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+	private string fileName = "scoreData.json";
+
+	public void GetInput(string playerName)
+	{
+		if (!string.IsNullOrEmpty (playerName)) 
+		{
+			PlayerPrefs.SetString ("CurrentPlayer", playerName);
+			StartGame ();
+		}
+
+	}
+		
     // Start a new game
 	public void StartGame()
 	{

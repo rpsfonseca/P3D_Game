@@ -3,6 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+
+[System.Serializable]
+public class AllScores 
+{
+	public List<PlayerScore> scores = new List<PlayerScore> ();
+
+}
+
+[System.Serializable]
+public class PlayerScore
+{
+	public string playerName;
+	public int playerScore;
+
+
+}
+
 public class Score : MonoBehaviour {
 
 	public static int score;
