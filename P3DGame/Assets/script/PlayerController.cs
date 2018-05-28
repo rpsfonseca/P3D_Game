@@ -67,11 +67,11 @@ public class PlayerController : MonoBehaviour
         {
             Inventory.instance.UseItem(2);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Inventory.instance.UseItem(3);
         }
-
+			
         if (Input.GetButtonDown("Fire1") && disk != null)
         {
             disk.TryToThrow();

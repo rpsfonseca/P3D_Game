@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-		playerName = PlayerPrefs.GetString ("CurrentPlayer");
-
         if (instance != null)
         {
             Debug.LogWarning("More than one instance of Inventory found!");
@@ -30,8 +28,9 @@ public class GameManager : MonoBehaviour
     public DiskController diskController;
     public HealthBar health;
     public Score scoreManager;
+	public HighScoresManager highScoreManager;
 
-	private string playerName = "test";
+
     private float playerHealth = 100.0f;
 
     public void DealPlayerDamage(float hitDamage)
@@ -43,4 +42,26 @@ public class GameManager : MonoBehaviour
     {
         scoreManager.IncrementScoreWithKill();
     }
+
+	public void KillPlayer()
+	{
+		string playerName = PlayerPrefs.GetString ("CurrentPlayer");
+		int score = scoreManager.GetScore ();
+
+		PlayerScore playerScore = new PlayerScore ();
+		playerScore.playerName = playerName;
+		playerScore.playerScore = score;
+
+		// Add score to all scores json files
+
+		highScoreManager.LoadScores();
+		highScoreManager.AddScore (playerScore);
+
+		// Set current score
+		PlayerPrefs.SetInt ("CurrentScore", score);
+
+		// Go to end menu
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+	}
 }

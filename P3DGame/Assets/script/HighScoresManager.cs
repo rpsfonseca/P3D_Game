@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class HighScoresPanel : MonoBehaviour {
+public class HighScoresManager : MonoBehaviour {
 
 	public GameObject entryPrefab;
 
@@ -14,13 +14,18 @@ public class HighScoresPanel : MonoBehaviour {
 
 	private AllScores allScores = new AllScores();
 
+	// Display scores when high scores panel is enabled
 	void OnEnable()
 	{
 		LoadScores ();
-		SortByScore ();
-		DisplayScores ();
+
+		if (allScores != null) {
+			SortByScore ();
+			DisplayScores ();
+		}
 	}
 
+	// Remove scores when high scores panel is disabled
 	void OnDisable()
 	{
 		foreach (Transform child in gameObject.transform) 
@@ -28,8 +33,7 @@ public class HighScoresPanel : MonoBehaviour {
 			GameObject.Destroy (child.gameObject);
 		}
 	}
-		
-
+			
 	public void DisplayScores()
 	{
 		// Get top 10, if there are 10 scores available
@@ -48,7 +52,17 @@ public class HighScoresPanel : MonoBehaviour {
 
 	public void SortByScore()
 	{
-		allScores.scores.Sort ((p1,p2)=> p2.playerScore.CompareTo(p1.playerScore));	
+			allScores.scores.Sort ((p1,p2)=> p2.playerScore.CompareTo(p1.playerScore));	
+	}
+
+
+	public void AddScore(PlayerScore ps)
+	{
+		// Add to scores list
+		allScores.scores.Add (ps);
+		string dataToJson = JsonUtility.ToJson (allScores);
+		string filePath = Application.dataPath + scoresFilePath;
+		File.WriteAllText (filePath, dataToJson);
 	}
 		
 	public void LoadScores()

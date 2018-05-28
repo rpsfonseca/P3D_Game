@@ -36,8 +36,10 @@ public class HealthBar : MonoBehaviour {
         health -= hitDamage;
 
         //FIXME: This is just for debugging
-        if (health < 0)
-            health = 0;
+		if (health <= 0) {
+			health = 0;
+			GameManager.instance.KillPlayer ();
+		}
 
         float ratio = health / maxHealth;
         healthBarFill.localScale = new Vector3(ratio, 1f, 1f);

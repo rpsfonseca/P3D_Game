@@ -39,9 +39,13 @@ public class Score : MonoBehaviour {
 		//scoreText.text = "Score: " + score;
 	}
 
+	public int GetScore(){
+		return score;
+	}
+
     public void IncrementScoreWithKill()
     {
-        score += 10;
+        score += 100;
         scoreText.text = "Score: " + score;
     }
 }
