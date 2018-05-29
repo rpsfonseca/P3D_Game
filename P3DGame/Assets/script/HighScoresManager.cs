@@ -63,9 +63,18 @@ public class HighScoresManager : MonoBehaviour {
 		
 	public void LoadScores()
 	{
+		Debug.Log (Application.persistentDataPath);
 		// Read the json from the file into a string
-		string dataAsJson = File.ReadAllText(Application.persistentDataPath + "/scores.json");
-		// Pass the json to JsonUtility, and tell it to create a GameData object from it
-		allScores = JsonUtility.FromJson<AllScores>(dataAsJson);
+
+		if (File.Exists (Application.persistentDataPath + "/scores.json")) {
+			string dataAsJson = File.ReadAllText (Application.persistentDataPath + "/scores.json");
+			allScores = JsonUtility.FromJson<AllScores>(dataAsJson);
+
+		} else {
+			string dataToJson = JsonUtility.ToJson (allScores);
+			File.WriteAllText (Application.persistentDataPath + "/scores.json", dataToJson);
+		}
+			
+
 	}
 }
