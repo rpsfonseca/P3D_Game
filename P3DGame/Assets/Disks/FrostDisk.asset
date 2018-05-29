@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: FrostDisk
   m_EditorClassIdentifier: 
   name: Frost
-  icon: {fileID: 21300000, guid: e9cb31c6a93608c4f903f4afde69f67f, type: 3}
+  icon: {fileID: 21300000, guid: 4b90641c134c149fb81cf95c6526cf61, type: 3}
   isDefaultItem: 0
-  itemMaterial: {fileID: 2100000, guid: 4ee64140277d903479dd9ce9a86efe78, type: 2}
+  itemMaterial: {fileID: 2100000, guid: 2667a5c9f5131584fbf0c0eed1a345d8, type: 2}
   damageFactor: 5

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: FireDisk
   m_EditorClassIdentifier: 
   name: Fire
-  icon: {fileID: 21300000, guid: 67c3e5df80fdfc14891d7161ebb897f0, type: 3}
+  icon: {fileID: 21300000, guid: 2ed9d161213214e10b97a05258bfd2a7, type: 3}
   isDefaultItem: 0
-  itemMaterial: {fileID: 2100000, guid: 70376f9529b94b4478895402fe25ac2e, type: 2}
+  itemMaterial: {fileID: 2100000, guid: c5fc4c62d5346c2499f1defb1b25362a, type: 2}
   damageFactor: 2.5
