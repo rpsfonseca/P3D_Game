@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+		Cursor.visible = false;
+		Cursor.lockState = CursorLockMode.Locked;
+
         motor = GetComponent<PlayerMotor>();
 
         Physics.IgnoreCollision(disk.gameObject.GetComponent<Collider>(), GetComponent<CapsuleCollider>());

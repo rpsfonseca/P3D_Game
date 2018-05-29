@@ -250,7 +250,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: LEVEL COMPLETE!
+  m_Text: 
 --- !u!222 &216241845
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1139,6 +1139,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 450681301}
+  message: {fileID: 216241844}
+  highScores: {fileID: 1027003883}
+  manager: {fileID: 79984443}
 --- !u!1 &2046940084
 GameObject:
   m_ObjectHideFlags: 0

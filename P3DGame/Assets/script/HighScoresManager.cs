@@ -9,20 +9,15 @@ public class HighScoresManager : MonoBehaviour {
 
 	public GameObject entryPrefab;
 
-	private string scoresFileName = "scores.json";
-	private string scoresFilePath = "/StreamingAssets/scores.json";
 
 	private AllScores allScores = new AllScores();
 
 	// Display scores when high scores panel is enabled
 	void OnEnable()
 	{
-		LoadScores ();
 
-		if (allScores != null) {
-			SortByScore ();
-			DisplayScores ();
-		}
+		DisplayScores ();
+
 	}
 
 	// Remove scores when high scores panel is disabled
@@ -36,6 +31,8 @@ public class HighScoresManager : MonoBehaviour {
 			
 	public void DisplayScores()
 	{
+		LoadScores ();
+		SortByScore ();
 		// Get top 10, if there are 10 scores available
 		int maxIterations = Mathf.Min (allScores.scores.Count, 10);
 
@@ -61,24 +58,14 @@ public class HighScoresManager : MonoBehaviour {
 		// Add to scores list
 		allScores.scores.Add (ps);
 		string dataToJson = JsonUtility.ToJson (allScores);
-		string filePath = Application.dataPath + scoresFilePath;
-		File.WriteAllText (filePath, dataToJson);
+		File.WriteAllText(Application.persistentDataPath + "/scores.json", dataToJson);
 	}
 		
 	public void LoadScores()
 	{
-		string filePath = Path.Combine(Application.streamingAssetsPath, scoresFileName);
-
-		if(File.Exists(filePath))
-		{
-			// Read the json from the file into a string
-			string dataAsJson = File.ReadAllText(filePath); 
-			// Pass the json to JsonUtility, and tell it to create a GameData object from it
-			allScores = JsonUtility.FromJson<AllScores>(dataAsJson);
-		}
-		else
-		{
-			Debug.LogError("Cannot load game data!");
-		}	
+		// Read the json from the file into a string
+		string dataAsJson = File.ReadAllText(Application.persistentDataPath + "/scores.json");
+		// Pass the json to JsonUtility, and tell it to create a GameData object from it
+		allScores = JsonUtility.FromJson<AllScores>(dataAsJson);
 	}
 }

@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-	private string fileName = "scoreData.json";
-
 	public void GetInput(string playerName)
 	{
 		if (!string.IsNullOrEmpty (playerName)) 
@@ -28,13 +26,6 @@ public class MainMenu : MonoBehaviour
 	// Quit game
 	public void QuitGame()
 	{
-        if (Application.isEditor)
-        {
-            UnityEditor.EditorApplication.isPlaying = false;
-        }
-        else
-        {
-            Application.Quit();
-        }
+		Application.Quit();
     }
 }

@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+
+
         if (instance != null)
         {
             Debug.LogWarning("More than one instance of Inventory found!");
@@ -49,19 +51,30 @@ public class GameManager : MonoBehaviour
 		int score = scoreManager.GetScore ();
 
 		PlayerScore playerScore = new PlayerScore ();
+
 		playerScore.playerName = playerName;
 		playerScore.playerScore = score;
 
 		// Add score to all scores json files
 
-		highScoreManager.LoadScores();
-		highScoreManager.AddScore (playerScore);
-
 		// Set current score
-		PlayerPrefs.SetInt ("CurrentScore", score);
+		PlayerPrefs.SetInt("CurrentScore", score);
+		PlayerPrefs.SetString("GameStatus", "DEAD");
 
 		// Go to end menu
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
 
+	}
+
+	public void SaveScore()
+	{
+		PlayerPrefs.SetInt ("CurrentScore", scoreManager.GetScore ());
+		
+		PlayerScore ps = new PlayerScore ();
+		ps.playerName = PlayerPrefs.GetString ("CurrentPlayer", "Test");
+		ps.playerScore = PlayerPrefs.GetInt ("CurrentScore", 0);
+
+		highScoreManager.LoadScores ();
+		highScoreManager.AddScore (ps);
 	}
 }
