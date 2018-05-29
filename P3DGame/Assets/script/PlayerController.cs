@@ -31,6 +31,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+		// Kill player if he falls beneath a determined height
+		if (transform.position.y <= -30){
+			GameManager.instance.KillPlayer ();
+		}
+
         // Calculate movement velocity as a 3D vector
         float xMovement = Input.GetAxisRaw("Horizontal");
         float zMovement = Input.GetAxisRaw("Vertical");

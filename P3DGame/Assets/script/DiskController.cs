@@ -22,11 +22,14 @@ public class DiskController : MonoBehaviour
 	public Camera fpsCamera;
 	public GameObject player;
 
+	public GameObject glowComponent;
+
 	private Vector3 targetDirection;
 	private Vector3 localPosition;
 	private Quaternion localRotation;
 
 	private bool isThrown = false;
+
     public bool IsThrown
     {
         get { return IsThrown; }
@@ -186,7 +189,9 @@ public class DiskController : MonoBehaviour
             default:
                 break;
         }
-        meshRenderer.material = disk.itemMaterial;
+
+		MeshRenderer mshRenderer = glowComponent.GetComponent < MeshRenderer> ();
+		mshRenderer.material = disk.itemMaterial;
     }
 }
 

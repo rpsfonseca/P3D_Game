@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class EnemyController : MonoBehaviour
 {
 	public float maxHealth = 100.0f;
@@ -16,7 +15,6 @@ public class EnemyController : MonoBehaviour
     
 	private GameObject[] bullets;
 	private Transform target;
-	private Rigidbody rigidBody;
 
 	private ParticleSystem smoke;
 	private ParticleSystem explode;
@@ -32,7 +30,6 @@ public class EnemyController : MonoBehaviour
 	void Start ()
 	{
 		health = maxHealth;
-		rigidBody = GetComponent<Rigidbody>();
 
         //target = GameManager.instance.player.transform;
 
